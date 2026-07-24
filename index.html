@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b2a4a">
+<link rel="manifest" href="manifest.json">
+<title>DTYNI Fuel Finder</title>
+<style>
+  :root{
+    --brand:#0b2a4a;      /* ASP company primary - swap per company */
+    --accent:#f4a300;     /* fuel amber */
+    --ck:#e4002b;         /* Circle K red */
+    --tx:#0a7d34;         /* Texaco green */
+    --bg:#f4f6f8; --card:#fff; --ink:#12212e; --muted:#5c6b78; --line:#e3e8ec;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);}
+  /* ---- Splash ---- */
+  #splash{position:fixed;inset:0;background:linear-gradient(160deg,var(--brand),#123f6b);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;z-index:50;transition:opacity .4s}
+  #splash.hide{opacity:0;pointer-events:none}
+  .logo{width:96px;height:96px;border-radius:24px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:52px;box-shadow:0 12px 30px rgba(0,0,0,.3);margin-bottom:22px}
+  #splash h1{font-size:26px;margin:0 0 6px;font-weight:800;letter-spacing:.3px}
+  #splash p{margin:0;opacity:.82;font-size:15px;max-width:280px;line-height:1.5}
+  .sbtn{margin-top:34px;background:var(--accent);color:#1a1200;border:0;font-weight:800;font-size:17px;padding:16px 30px;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+  .powered{position:absolute;bottom:22px;font-size:12px;opacity:.6}
+  /* ---- App ---- */
+  header{background:var(--brand);color:#fff;padding:14px 16px calc(14px + env(safe-area-inset-top));display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+  header .hlogo{width:38px;height:38px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;flex:0 0 auto}
+  header h2{font-size:16px;margin:0;font-weight:800;line-height:1.15}
+  header small{font-size:11px;opacity:.75;font-weight:500}
+  .gear{margin-left:auto;background:rgba(255,255,255,.15);border:0;color:#fff;width:38px;height:38px;border-radius:10px;font-size:18px}
+  .tabs{display:flex;background:var(--brand);padding:0 10px 12px;gap:8px}
+  .tab{flex:1;text-align:center;padding:11px 8px;border-radius:11px;background:rgba(255,255,255,.12);color:#fff;font-weight:700;font-size:13.5px;border:0;line-height:1.25}
+  .tab.on{background:var(--accent);color:#1a1200}
+  .tab small{display:block;font-weight:500;opacity:.8;font-size:10.5px;margin-top:2px}
+  #status{padding:12px 16px;color:var(--muted);font-size:13.5px;text-align:center}
+  .list{padding:8px 12px 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 2px rgba(16,33,46,.04)}
+  .rank{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--brand);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .card.best .rank{background:var(--accent);color:#1a1200}
+  .info{flex:1;min-width:0}
+  .info .nm{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .info .ad{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+  .meta{display:flex;gap:7px;align-items:center;margin-top:6px;flex-wrap:wrap}
+  .chip{font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:20px;color:#fff;letter-spacing:.3px}
+  .chip.ck{background:var(--ck)} .chip.tx{background:var(--tx)} .chip.other{background:#666}
+  .dist{font-size:12.5px;font-weight:700;color:var(--ink)}
+  .detour{font-size:11.5px;color:var(--tx);font-weight:700}
+  .detour.warn{color:#c26a00}
+  .nav{flex:0 0 auto;text-decoration:none;background:var(--brand);color:#fff;font-weight:800;font-size:12.5px;padding:9px 12px;border-radius:11px;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:58px;text-align:center}
+  .nav span{font-size:16px}
+  .best-banner{background:#fff7e6;border:1px solid #f4d999;color:#8a5a00;font-size:12.5px;padding:9px 12px;border-radius:11px;margin:0 0 10px;line-height:1.4}
+  /* settings sheet */
+  #sheet{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;z-index:40}
+  #sheet.on{display:flex}
+  .sheet-in{background:#fff;width:100%;border-radius:18px 18px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom))}
+  .sheet-in h3{margin:0 0 4px;font-size:17px}
+  .sheet-in p{margin:0 0 14px;font-size:13px;color:var(--muted);line-height:1.5}
+  .fld{display:flex;gap:8px;margin-bottom:10px}
+  .fld input{flex:1;padding:11px;border:1px solid var(--line);border-radius:10px;font-size:14px}
+  .setbtn{width:100%;background:var(--brand);color:#fff;border:0;font-weight:800;font-size:15px;padding:14px;border-radius:12px;margin-top:6px}
+  .closebtn{width:100%;background:none;border:0;color:var(--muted);font-size:14px;padding:12px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<div id="splash">
+  <div class="logo">⛽</div>
+  <h1>DTYNI Fuel Finder</h1>
+  <p>Find your nearest Circle K &amp; Texaco stations that accept your fuel card — ranked smartly for your route.</p>
+  <button class="sbtn" id="start">Find fuel near me →</button>
+  <div class="powered">Powered by your Amazon Service Partner</div>
+</div>
+
+<header>
+  <div class="hlogo">⛽</div>
+  <div>
+    <h2>DTYNI Fuel Finder</h2>
+    <small id="hsub">Circle K &amp; Texaco • fuel-card accepted</small>
+  </div>
+  <button class="gear" id="gear">⚙</button>
+</header>
+
+<div class="tabs">
+  <button class="tab on" id="tabNear">Nearest to me<small>closest right now</small></button>
+  <button class="tab" id="tabHome">Best on way back<small>towards the depot</small></button>
+</div>
+
+<div id="status">Getting your location…</div>
+<div class="list" id="list"></div>
+
+<div id="sheet">
+  <div class="sheet-in">
+    <h3>Depot (home base)</h3>
+    <p>Set the Amazon depot the drivers return to. The "Best on way back" list ranks stations by how little they add to the trip home. Tap "Use my current spot" while standing at the depot, or paste coordinates.</p>
+    <div class="fld">
+      <input id="dlat" placeholder="Depot latitude" inputmode="decimal">
+      <input id="dlon" placeholder="Depot longitude" inputmode="decimal">
+    </div>
+    <button class="setbtn" id="useHere">Use my current spot as depot</button>
+    <button class="setbtn" id="saveDepot" style="background:var(--accent);color:#1a1200">Save depot</button>
+    <button class="closebtn" id="closeSheet">Close</button>
+  </div>
+</div>
+
+<script>
+const KM_MI = 0.621371;
+let me = null;                       // {lat,lon}
+let stations = [];
+let mode = 'near';                   // 'near' | 'home'
+// Default demo depot: Mallusk industrial area, Belfast (placeholder — set your real depot in ⚙)
+let depot = JSON.parse(localStorage.getItem('depot')||'null') || {lat:54.6717, lon:-5.9833, demo:true};
+
+function hav(a,b){
+  const R=6371,dLat=(b.lat-a.lat)*Math.PI/180,dLon=(b.lon-a.lon)*Math.PI/180;
+  const la1=a.lat*Math.PI/180,la2=b.lat*Math.PI/180;
+  const x=Math.sin(dLat/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dLon/2)**2;
+  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+}
+const mi = km => (km*KM_MI);
+const fmt = km => { const m=mi(km); return m<0.1?'here':(m<10?m.toFixed(1):Math.round(m))+' mi'; };
+function brandChip(b){const c=b==='Circle K'?'ck':b==='Texaco'?'tx':'other';return `<span class="chip ${c}">${b}</span>`;}
+
+async function loadStations(){
+  try{ const r=await fetch('stations.json',{cache:'no-store'}); const j=await r.json();
+       stations=j.stations; document.getElementById('hsub').textContent=`${stations.length} stations • fuel-card accepted`; }
+  catch(e){ document.getElementById('status').textContent='Could not load station list.'; }
+}
+
+function render(){
+  const list=document.getElementById('list'); const st=document.getElementById('status');
+  if(!me){ st.textContent='Waiting for your location…'; list.innerHTML=''; return; }
+  let rows = stations.map(s=>{
+    const dMe = hav(me,s);
+    const dDepot = hav(s,depot);
+    const base = hav(me,depot);
+    const detour = (dMe + dDepot) - base;   // extra distance vs driving straight home
+    return {...s, dMe, detour};
+  });
+  if(mode==='near'){ rows.sort((a,b)=>a.dMe-b.dMe); st.textContent=`Sorted by distance from you • ${stations.length} stations`; }
+  else { rows.sort((a,b)=>a.detour-b.detour); st.textContent = depot.demo
+      ? 'Ranked by detour toward the DEMO depot — set your real depot in ⚙'
+      : 'Ranked by how little each adds to your trip back to the depot'; }
+  let html = (mode==='home')
+    ? `<div class="best-banner">Top pick adds the fewest extra miles to your journey back to the depot — not necessarily the closest to you now.</div>` : '';
+  html += rows.slice(0,20).map((s,i)=>{
+    const best = mode==='home' && i===0;
+    let detourTxt='';
+    if(mode==='home'){
+      const extra=mi(s.detour);
+      detourTxt = extra<0.3 ? `<span class="detour">≈ on your way home</span>`
+                 : `<span class="detour warn">+${extra<10?extra.toFixed(1):Math.round(extra)} mi detour</span>`;
+    }
+    const gmaps=`https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lon}&travelmode=driving`;
+    return `<div class="card ${best?'best':''}">
+      <div class="rank">${i+1}</div>
+      <div class="info">
+        <div class="nm">${s.name}</div>
+        <div class="ad">${s.address||''}</div>
+        <div class="meta">${brandChip(s.brand)}<span class="dist">${fmt(s.dMe)}</span>${detourTxt}</div>
+      </div>
+      <a class="nav" href="${gmaps}" target="_blank" rel="noopener"><span>➤</span>Navigate</a>
+    </div>`;
+  }).join('');
+  list.innerHTML=html;
+}
+
+function locate(){
+  if(!navigator.geolocation){document.getElementById('status').textContent='Location not available on this device.';return;}
+  navigator.geolocation.getCurrentPosition(
+    p=>{ me={lat:p.coords.latitude,lon:p.coords.longitude}; render(); },
+    e=>{ document.getElementById('status').textContent='Location blocked — allow location access to rank stations.'; },
+    {enableHighAccuracy:true,timeout:10000,maximumAge:30000}
+  );
+}
+
+// splash / start
+document.getElementById('start').onclick=()=>{ document.getElementById('splash').classList.add('hide'); locate(); };
+// tabs
+document.getElementById('tabNear').onclick=()=>{mode='near';setTabs();render();};
+document.getElementById('tabHome').onclick=()=>{mode='home';setTabs();render();};
+function setTabs(){document.getElementById('tabNear').classList.toggle('on',mode==='near');document.getElementById('tabHome').classList.toggle('on',mode==='home');}
+// settings
+const sheet=document.getElementById('sheet');
+document.getElementById('gear').onclick=()=>{document.getElementById('dlat').value=depot.lat;document.getElementById('dlon').value=depot.lon;sheet.classList.add('on');};
+document.getElementById('closeSheet').onclick=()=>sheet.classList.remove('on');
+document.getElementById('useHere').onclick=()=>{ if(navigator.geolocation)navigator.geolocation.getCurrentPosition(p=>{document.getElementById('dlat').value=p.coords.latitude.toFixed(6);document.getElementById('dlon').value=p.coords.longitude.toFixed(6);}); };
+document.getElementById('saveDepot').onclick=()=>{
+  const la=parseFloat(document.getElementById('dlat').value),lo=parseFloat(document.getElementById('dlon').value);
+  if(isNaN(la)||isNaN(lo))return; depot={lat:la,lon:lo,demo:false};
+  localStorage.setItem('depot',JSON.stringify(depot)); sheet.classList.remove('on'); render();
+};
+
+loadStations().then(()=>{ if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});} });
+</script>
+</body>
+</html>

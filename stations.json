@@ -1,0 +1,335 @@
+{
+  "group": "DTYNI Fuel",
+  "updated": "2025-12-21",
+  "stations": [
+    {
+      "name": "Circkle K - Newcastle",
+      "brand": "Circle K",
+      "lat": 54.2202316,
+      "lon": -5.8872342,
+      "address": "Dundrum Road, Murlough Upper"
+    },
+    {
+      "name": "Circle K - Mallusk",
+      "brand": "Circle K",
+      "lat": 54.6716534,
+      "lon": -5.9833324,
+      "address": "Mayfield Link, Ballywonard"
+    },
+    {
+      "name": "Circle K Andersonstown",
+      "brand": "Circle K",
+      "lat": 54.5728826,
+      "lon": -5.9928274,
+      "address": "Andersonstown Road 200, Belfast"
+    },
+    {
+      "name": "Circle K Antrim",
+      "brand": "Circle K",
+      "lat": 54.7038119,
+      "lon": -6.1759901,
+      "address": "Belfast Road, c"
+    },
+    {
+      "name": "Circle K Armagh",
+      "brand": "Circle K",
+      "lat": 54.3458606,
+      "lon": -6.6642809,
+      "address": "Killylea Road 1, Corporation"
+    },
+    {
+      "name": "Circle K Banbridge",
+      "brand": "Circle K",
+      "lat": 54.3535958,
+      "lon": -6.2681723,
+      "address": "Church Street 23a, Edenderry"
+    },
+    {
+      "name": "Circle K Beersbridge",
+      "brand": "Circle K",
+      "lat": 54.592521,
+      "lon": -5.8895248,
+      "address": "Beersbridge Road 323, Bloomfield"
+    },
+    {
+      "name": "Circle K Carrickfergus",
+      "brand": "Circle K",
+      "lat": 54.7184609,
+      "lon": -5.8210051,
+      "address": "Woodburn Avenue, Carrickfergus"
+    },
+    {
+      "name": "Circle K Knockmore",
+      "brand": "Circle K",
+      "lat": 54.5176938,
+      "lon": -6.0778213,
+      "address": "Ballymacross Avenue, Ballymacoss"
+    },
+    {
+      "name": "Circle K Lanark Way",
+      "brand": "Circle K",
+      "lat": 54.6029535,
+      "lon": -5.9593427,
+      "address": "Lanark Way 18, Clonard"
+    },
+    {
+      "name": "Circle K Lurgan",
+      "brand": "Circle K",
+      "lat": 54.4721418,
+      "lon": -6.3236189,
+      "address": "Cornakinnegar Road, Drumnamoe"
+    },
+    {
+      "name": "Circle K Newtownabbey",
+      "brand": "Circle K",
+      "lat": 54.6705335,
+      "lon": -5.9254235,
+      "address": "O'Neill Road, Dunanney"
+    },
+    {
+      "name": "Circle K Nutts Corner",
+      "brand": "Circle K",
+      "lat": 54.6414718,
+      "lon": -6.1556053,
+      "address": "Tully Road, Straidhavern"
+    },
+    {
+      "name": "Circle K Portadown",
+      "brand": "Circle K",
+      "lat": 54.4291385,
+      "lon": -6.4478213,
+      "address": "Garvaghy Road 139, Garvaghy"
+    },
+    {
+      "name": "Circle K Portglenone",
+      "brand": "Circle K",
+      "lat": 54.8725139,
+      "lon": -6.4889449,
+      "address": "Mayogall Road, Glenone"
+    },
+    {
+      "name": "Circle K Silverwood Lurgan",
+      "brand": "Circle K",
+      "lat": 54.4680892,
+      "lon": -6.3672692,
+      "address": "Silverwood Road, Silverwood"
+    },
+    {
+      "name": "Circle K Stewartstown Rd",
+      "brand": "Circle K",
+      "lat": 54.5539595,
+      "lon": -6.0274225,
+      "address": "Stewartstown Road, Lagmore"
+    },
+    {
+      "name": "Circle K Whitemountain",
+      "brand": "Circle K",
+      "lat": 54.5483002,
+      "lon": -6.0763729,
+      "address": "Pond Park Road, White Mountain"
+    },
+    {
+      "name": "Texaco - Downpatrick",
+      "brand": "Texaco",
+      "lat": 54.324461,
+      "lon": -5.7129818,
+      "address": "Saint Patrick's Drive, Demesne of Down"
+    },
+    {
+      "name": "Texaco Antrim Rd",
+      "brand": "Texaco",
+      "lat": 54.6425893,
+      "lon": -5.9356374,
+      "address": "Antrim Road, Low Wood"
+    },
+    {
+      "name": "Texaco Ards",
+      "brand": "Texaco",
+      "lat": 54.5870287,
+      "lon": -5.6846255,
+      "address": "Portaferry Road Roundabout, Commons"
+    },
+    {
+      "name": "Texaco Ballinderry",
+      "brand": "Texaco",
+      "lat": 54.5428206,
+      "lon": -6.2019378,
+      "address": "Glenavy Road, Ballinderry Upper"
+    },
+    {
+      "name": "Texaco Ballygowan",
+      "brand": "Texaco",
+      "lat": 54.5015052,
+      "lon": -5.792504,
+      "address": "Saintfield Road 2, Ballygowan"
+    },
+    {
+      "name": "Texaco Ballynahinch 1",
+      "brand": "Texaco",
+      "lat": 54.4067769,
+      "lon": -5.8945137,
+      "address": "Belfast Road, Ballynahinch"
+    },
+    {
+      "name": "Texaco Balmoral",
+      "brand": "Texaco",
+      "lat": 54.5726494,
+      "lon": -5.9760153,
+      "address": "Stockman's Lane, Ballygammon"
+    },
+    {
+      "name": "Texaco Banbridge",
+      "brand": "Texaco",
+      "lat": 54.3436905,
+      "lon": -6.2474602,
+      "address": "Castlewellan Road 124, Ballydown"
+    },
+    {
+      "name": "Texaco Belsize Rd",
+      "brand": "Texaco",
+      "lat": 54.5320334,
+      "lon": -6.0419548,
+      "address": "Belsize Lane, Magheralave"
+    },
+    {
+      "name": "Texaco Castledawson",
+      "brand": "Texaco",
+      "lat": 54.7777654,
+      "lon": -6.5632099,
+      "address": "Magherafelt Road, Shanemullagh"
+    },
+    {
+      "name": "Texaco Comber",
+      "brand": "Texaco",
+      "lat": 54.546231,
+      "lon": -5.7418585,
+      "address": "Killinchy Street, Comber"
+    },
+    {
+      "name": "Texaco Craigavon",
+      "brand": "Texaco",
+      "lat": 54.4493514,
+      "lon": -6.381104,
+      "address": "Lake Road"
+    },
+    {
+      "name": "Texaco Craigs",
+      "brand": "Texaco",
+      "lat": 54.9154082,
+      "lon": -6.4049327,
+      "address": "Craigs Road, Craigs"
+    },
+    {
+      "name": "Texaco Doagh",
+      "brand": "Texaco",
+      "lat": 54.7368399,
+      "lon": -6.0415578,
+      "address": "Station Road, Doagh"
+    },
+    {
+      "name": "Texaco Dollingstown",
+      "brand": "Texaco",
+      "lat": 54.4624772,
+      "lon": -6.2914968,
+      "address": "Belfast Road, Dollingstown"
+    },
+    {
+      "name": "Texaco Donaghadee",
+      "brand": "Texaco",
+      "lat": 54.6446164,
+      "lon": -5.5471087,
+      "address": "Moat Street, Donaghadee"
+    },
+    {
+      "name": "Texaco Dromore",
+      "brand": "Texaco",
+      "lat": 54.4162986,
+      "lon": -6.1440182,
+      "address": "Hillsborough Road (Begny), Dromore"
+    },
+    {
+      "name": "Texaco Dundonald",
+      "brand": "Texaco",
+      "lat": 54.5885324,
+      "lon": -5.8250908,
+      "address": "Old Dundonald Road, Tullycarnet"
+    },
+    {
+      "name": "Texaco Gilnahirk",
+      "brand": "Texaco",
+      "lat": 54.5832051,
+      "lon": -5.8405048,
+      "address": "Gilnahirk Road, Gilnahirk"
+    },
+    {
+      "name": "Texaco Greenisland",
+      "brand": "Texaco",
+      "lat": 54.7007773,
+      "lon": -5.8864564,
+      "address": "Upper Road, Greenisland"
+    },
+    {
+      "name": "Texaco Kircubbin",
+      "brand": "Texaco",
+      "lat": 54.4859271,
+      "lon": -5.5302376,
+      "address": "Cooks Brae, Kircubbin"
+    },
+    {
+      "name": "Texaco Lisburn",
+      "brand": "Texaco",
+      "lat": 54.5088653,
+      "lon": -6.0331625,
+      "address": "Saintfield Road, Largymore"
+    },
+    {
+      "name": "Texaco Loughbrickland",
+      "brand": "Texaco",
+      "lat": 54.3149837,
+      "lon": -6.3033736,
+      "address": "Main Street, Loughbrickland"
+    },
+    {
+      "name": "Texaco Lurgan",
+      "brand": "Texaco",
+      "lat": 54.4550682,
+      "lon": -6.3200945,
+      "address": "Banbridge Road, Tannaghmore"
+    },
+    {
+      "name": "Texaco Newtownabbey",
+      "brand": "Texaco",
+      "lat": 54.663035,
+      "lon": -5.9106767,
+      "address": "Doagh Road, White House"
+    },
+    {
+      "name": "Texaco Pond Park Rd",
+      "brand": "Texaco",
+      "lat": 54.5214645,
+      "lon": -6.0597163,
+      "address": "Pond Park Road, Clogher"
+    },
+    {
+      "name": "Texaco Portadown Gilmore Rd",
+      "brand": "Texaco",
+      "lat": 54.4228533,
+      "lon": -6.4274633,
+      "address": "Gilford Road (Levaghery) 23-25, Armagh"
+    },
+    {
+      "name": "Texaco Tullycarney",
+      "brand": "Texaco",
+      "lat": 54.5884772,
+      "lon": -5.8251733,
+      "address": "Old Dundonald Road, Tullycarnet"
+    },
+    {
+      "name": "Texaco Whitehead",
+      "brand": "Texaco",
+      "lat": 54.7540373,
+      "lon": -5.7185876,
+      "address": "Larne Road, White Head"
+    }
+  ]
+}
