@@ -3,8 +3,8 @@
   "short_name": "Fuel Finder",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0b2a4a",
-  "theme_color": "#0b2a4a",
+  "background_color": "#1b2b38",
+  "theme_color": "#1b2b38",
   "icons": [
     { "src": "icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
